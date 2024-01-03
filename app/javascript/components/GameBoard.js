@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Timer from './Timer';
+import Cell from './Cell';
 
 const GameBoard = (props) => {
   const [selectedCell, setSelectedCell] = useState(null);
@@ -37,26 +38,13 @@ const GameBoard = (props) => {
 
   const renderCell = (index) => {
     return (
-      <div className="w-32 h-32 border border-gray-400 flex justify-center items-center">
-        {index === selectedCell && (
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transform transition duration-500 hover:scale-105"
-            onClick={handleStartClick}
-            style={{ animation: 'popIn 0.5s ease-out' }}
-          >
-            スタート
-          </button>
-        )}
-        {index === decoyCell && (
-          <button
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transform transition duration-500 hover:scale-105"
-            onClick={handleDecoyClick}
-            style={{ animation: 'popIn 0.5s ease-out' }}
-          >
-            スタード
-          </button>
-        )}
-      </div>
+      <Cell
+        key={index}
+        isStart={index === selectedCell}
+        isDecoy={index === decoyCell}
+        onStartClick={handleStartClick}
+        onDecoyClick={handleDecoyClick}
+      />
     );
   };
 
@@ -72,11 +60,7 @@ const GameBoard = (props) => {
       <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />
       <div className="text-xl font-semibold mb-4">スコア: {score}</div>
       <div className="grid grid-cols-3 gap-4">
-        {Array.from({ length: 9 }, (_, index) => (
-          <React.Fragment key={index}>
-            {renderCell(index)}
-          </React.Fragment>
-        ))}
+        {Array.from({ length: 9 }, (_, index) => renderCell(index))}
       </div>
     </React.Fragment>
   );
