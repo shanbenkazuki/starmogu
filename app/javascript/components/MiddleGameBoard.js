@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Timer from './Timer';
 import Cell from './MiddleCell';
+import Modal from './Modal';
 
 const GameBoard = (props) => {
   const [selectedCell, setSelectedCell] = useState(null);
   const [decoyCells, setDecoyCells] = useState([]); // デコイセルの状態を追加
   const [score, setScore] = useState(0);
   const initialTime = 20;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   useEffect(() => {
     showRandomWord();
@@ -52,9 +55,14 @@ const GameBoard = (props) => {
   };
 
   const handleTimeUp = () => {
-    alert(`タイムアップ！あなたのスコアは ${score} 点です。`);
+    setScore(score);
     setSelectedCell(null);
     setDecoyCells([]);
+    setIsModalOpen(true); // モーダルを開く
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -65,6 +73,7 @@ const GameBoard = (props) => {
       <div className="grid grid-cols-3 gap-4">
         {Array.from({ length: 9 }, (_, index) => renderCell(index))}
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal} score={score} />
     </React.Fragment>
   );
 };
