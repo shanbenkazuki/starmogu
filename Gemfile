@@ -65,6 +65,6 @@ group :test do
 
 end
 
-gem "shakapacker", "= 7.2"
+gem "shakapacker", "= 7.2.1"
 
 gem "react-rails", "= 3.1.1"
