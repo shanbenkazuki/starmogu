@@ -68,10 +68,15 @@ const GameBoard = (props) => {
 
   return (
     <React.Fragment>
+      <a href="/home" className="text-blue-600 hover:text-blue-800 font-bold underline">Homeに戻る</a>
       <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />
       <div className="text-xl font-semibold mb-4">スコア: {score}</div>
       <div className="grid grid-cols-3 gap-4">
-        {Array.from({ length: 9 }, (_, index) => renderCell(index))}
+        {Array.from({ length: 9 }, (_, index) => (
+          <React.Fragment key={index}>
+            {renderCell(index)}
+          </React.Fragment>
+        ))}
       </div>
     </React.Fragment>
   );
