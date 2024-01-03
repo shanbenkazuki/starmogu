@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "games#home"
-  get "games" => "games#index"
+  get "games/low" => "games#low"
+  get "games/middle" => "games#middle"
+  get "games/high" => "games#high"
 end
