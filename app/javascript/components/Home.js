@@ -1,5 +1,8 @@
 import React from "react";
 import startClickTopImage from "../images/start-click-top.webp"; // 画像のパスを指定
+import { UIProvider } from "@yamada-ui/react"
+import { Button } from "@yamada-ui/react"
+import { Link } from "@yamada-ui/react"
 
 const levels = [
   { path: "/games/low", label: "初級" },
@@ -10,20 +13,26 @@ const levels = [
 const Home = (props) => {
   return (
     <React.Fragment>
-      <div className="mb-2 text-center">
-        <img src={startClickTopImage} alt="スタートクリックトップ" /> {/* 画像を表示 */}
-        <p className="">スタートを押すと<span className="text-red-600 font-bold">+1点</span></p>
-        <p className="">それ以外を押すと<span className=" text-blue-600 font-bold">-1点</span></p>
-        {levels.map((level) => (
-          <a
-            key={level.path}
-            href={level.path}
-            className="text-blue-600 hover:text-blue-800 font-bold underline mr-2"
-          >
-            {level.label}
-          </a>
-        ))}
-      </div>
+      <UIProvider>
+        <div className="mb-2 text-center">
+          <img src={startClickTopImage} alt="スタートクリックトップ" />
+          <p className="">スタートを押すと<span className="text-red-600 font-bold">+1点</span></p>
+          <p className="">それ以外を押すと<span className=" text-blue-600 font-bold">-1点</span></p>
+          {levels.map((level) => (
+            <Link href={level.path} key={level.path} className="font-bold mr-2">
+              {level.label}
+            </Link>
+          ))}
+        </div>
+        <div className="mb-2 text-center">
+          <Button onClick={() => window.open("/login", '_self')} className="font-bold mr-2">
+            ログイン
+          </Button>
+          <Button onClick={() => window.open("/users/new", '_self')} className="font-bold mr-2">
+            新規登録
+          </Button>
+        </div>
+      </UIProvider>
     </React.Fragment>
   );
 }
