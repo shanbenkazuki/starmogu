@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Timer from './Timer';
 import Cell from './Cell';
-import Modal from './Modal';
+import Modal from './ScoreModal';
 
 const GameBoard = (props) => {
   const [selectedCell, setSelectedCell] = useState(null);
