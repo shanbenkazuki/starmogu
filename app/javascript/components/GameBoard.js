@@ -5,9 +5,9 @@ import Modal from './Modal';
 
 const GameBoard = (props) => {
   const [selectedCell, setSelectedCell] = useState(null);
-  const [decoyCell, setDecoyCell] = useState(null);
+  const [decoyCells, setDecoyCells] = useState([]); // デコイセルの状態を追加
   const [score, setScore] = useState(0);
-  const initialTime = 15;
+  const initialTime = props.initialTime;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -16,15 +16,18 @@ const GameBoard = (props) => {
 
   const showRandomWord = () => {
     setSelectedCell(null);
-    setDecoyCell(null);
+    setDecoyCells([]);
     setTimeout(() => {
       const randomCell = Math.floor(Math.random() * 9);
-      let decoyRandomCell;
-      do {
-        decoyRandomCell = Math.floor(Math.random() * 9);
-      } while (decoyRandomCell === randomCell);
+      let decoyCellsArray = [];
+      while (decoyCellsArray.length < props.decoyCellsCount) {
+        let decoyRandomCell = Math.floor(Math.random() * 9);
+        if (decoyRandomCell !== randomCell && !decoyCellsArray.includes(decoyRandomCell)) {
+          decoyCellsArray.push(decoyRandomCell);
+        }
+      }
       setSelectedCell(randomCell);
-      setDecoyCell(decoyRandomCell);
+      setDecoyCells(decoyCellsArray);
     }, 10);
   };
 
@@ -41,10 +44,10 @@ const GameBoard = (props) => {
   const renderCell = (index) => {
     return (
       <Cell
-        level={0}
+        level={props.level}
         key={index}
         isStart={index === selectedCell}
-        isDecoy={index === decoyCell}
+        isDecoy={decoyCells.includes(index)}
         onStartClick={handleStartClick}
         onDecoyClick={handleDecoyClick}
       />
@@ -53,9 +56,9 @@ const GameBoard = (props) => {
 
   const handleTimeUp = () => {
     setScore(score);
-    setIsModalOpen(true);
     setSelectedCell(null);
-    setDecoyCell(null);
+    setDecoyCells([]);
+    setIsModalOpen(true); // モーダルを開く
   };
 
   const closeModal = () => {
