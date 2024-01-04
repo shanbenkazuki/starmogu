@@ -73,7 +73,7 @@ const GameBoard = (props) => {
       <div className="grid grid-cols-3 gap-4">
         {Array.from({ length: 9 }, (_, index) => renderCell(index))}
       </div>
-      <Modal isOpen={isModalOpen} onClose={closeModal} score={score} />
+      <Modal isOpen={isModalOpen} onClose={closeModal} score={score} level={props.level} />
     </React.Fragment>
   );
 };
