@@ -119,6 +119,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
+    mysql2 (0.5.5)
     net-imap (0.4.9)
       date
       net-protocol
@@ -134,7 +135,6 @@ GEM
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     package_json (0.1.0)
-    pg (1.5.4)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -238,7 +238,7 @@ DEPENDENCIES
   capybara
   debug
   jbuilder
-  pg (~> 1.1)
+  mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.8)
   react-rails (= 3.1.1)
