@@ -41,6 +41,7 @@ const GameBoard = (props) => {
   const renderCell = (index) => {
     return (
       <Cell
+        level={0}
         key={index}
         isStart={index === selectedCell}
         isDecoy={index === decoyCell}

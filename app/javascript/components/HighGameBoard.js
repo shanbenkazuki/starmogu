@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Timer from './Timer';
-import Cell from './HighCell';
+import Cell from './Cell';
 import Modal from './Modal';
 
 const GameBoard = (props) => {
@@ -44,6 +44,7 @@ const GameBoard = (props) => {
   const renderCell = (index) => {
     return (
       <Cell
+        level={2}
         key={index}
         isStart={index === selectedCell}
         isDecoy={decoyCells.includes(index)}
