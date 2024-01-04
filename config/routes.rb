@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get "games/low" => "games#low"
   get "games/middle" => "games#middle"
   get "games/high" => "games#high"
+  get "login" => "games#login_form"
+  post 'login', to: 'sessions#create'
 end
