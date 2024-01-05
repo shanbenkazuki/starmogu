@@ -20,7 +20,7 @@ const ScoreModal = ({ score, isOpen, onClose, level }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button variant="ghost" onClick={() => window.open('/', '_blank')}>
+          <Button variant="ghost" onClick={() => window.open('/', '_self')}>
             Homeに戻る
           </Button>
           <Button leftIcon={<Icon as={FaSquareXTwitter} />} onClick={() => window.open(twitterUrl, '_blank')}>
