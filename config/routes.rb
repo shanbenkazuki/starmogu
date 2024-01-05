@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "games#home"
+  get "ranking" => "games#ranking"
+  get "fetch_ranking" => "games#fetch_ranking"
   get "games/low" => "games#low"
   get "games/high" => "games#high"
   get "login" => "games#login_form"

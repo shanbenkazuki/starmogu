@@ -13,7 +13,6 @@ const levels = [
 const Home = (props) => {
   const isLogin = props.isLogin
   const username = props.username
-  console.log(isLogin)
   const handleLogout = async () => {
     try {
       await axios.post('/logout');
@@ -45,16 +44,21 @@ const Home = (props) => {
             </p>
           ) : (
             <React.Fragment>
-            <p className="font-bold">ログインしていません。</p>
-            <Button onClick={() => window.open("/login", '_self')} className="font-bold mr-2">
-            ログイン
-          </Button>
-          <Button onClick={() => window.open("/users/new", '_self')} className="font-bold mr-2">
-            新規登録
-          </Button>
+              <p className="font-bold">ログインしていません。</p>
+              <Button onClick={() => window.open("/login", '_self')} className="font-bold mr-2">
+                ログイン
+              </Button>
+              <Button onClick={() => window.open("/users/new", '_self')} className="font-bold mr-2">
+                新規登録
+              </Button>
             </React.Fragment>
             
           )}
+        </div>
+        <div className="mb-2 text-center">
+          <Button onClick={() => window.open("/ranking", '_self')} className="font-bold mr-2">
+            ランキング
+          </Button>
         </div>
       </UIProvider>
     </React.Fragment>
