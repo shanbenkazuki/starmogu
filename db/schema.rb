@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_04_131118) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_05_090725) do
+  create_table "scores", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "score", null: false
+    t.integer "level", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_scores_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
@@ -19,4 +28,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_131118) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "scores", "users"
 end

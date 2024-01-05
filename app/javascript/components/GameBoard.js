@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Timer from './Timer';
 import Cell from './Cell';
 import Modal from './ScoreModal';
+import axios from 'axios';
 
 const GameBoard = (props) => {
   const [selectedCell, setSelectedCell] = useState(null);
@@ -58,10 +59,19 @@ const GameBoard = (props) => {
     );
   };
 
-  const handleTimeUp = () => {
+  const handleTimeUp = async () => {
     setScore(score);
     setSelectedCell(null);
     setDecoyCells([]);
+    try {
+      const response = await axios.post('/scores', { score: { score: score, level: props.level } });
+      if (response.status === 200) {
+      }else{
+        alert("エラーが発生しました。");
+      }
+    } catch (error) {
+      alert("エラーが発生しました。");
+    }
     setIsModalOpen(true); // モーダルを開く
   };
 
