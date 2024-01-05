@@ -6,7 +6,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 
 const ScoreModal = ({ score, isOpen, onClose, level }) => {
   const levelText = ["初級", "中級", "上級"][level];
-  const pageUrl = "https://www.canva.com/design/DAF4_Jx8dDA/Yq2tsXI1qtlQPXy62iOwOA/view?utm_content=DAF4_Jx8dDA&utm_campaign=designshare&utm_medium=link&utm_source=editor";
+  const pageUrl = "https://gyazo.com/33c4a82e2cd0a50794d6fbed5d37177f";
   const tweetText = `私の${levelText}のスコアは ${score} 点です！ #ミニアプリウィーク ${pageUrl}`;
   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
 
