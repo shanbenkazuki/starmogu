@@ -9,6 +9,8 @@ const GameBoard = (props) => {
   const [score, setScore] = useState(0);
   const initialTime = props.initialTime;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const correctAudio = new Audio('/sounds/correct.mp3');
+  const wrongAudio = new Audio('/sounds/wrong.mp3');
 
   useEffect(() => {
     showRandomWord();
@@ -33,11 +35,13 @@ const GameBoard = (props) => {
 
   const handleStartClick = () => {
     setScore(score + 1);
+    correctAudio.play();
     showRandomWord();
   };
 
   const handleDecoyClick = () => {
     setScore(score - 1);
+    wrongAudio.play();
     showRandomWord();
   };
 
