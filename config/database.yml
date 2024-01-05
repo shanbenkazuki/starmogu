@@ -50,6 +50,4 @@ test:
 #
 production:
   <<: *default
-  database: starmogu_production
-  username: starmogu
-  password: <%= ENV["STARMOGU_DATABASE_PASSWORD"] %>
+  url: <%= ENV['JAWSDB_URL'] %>
