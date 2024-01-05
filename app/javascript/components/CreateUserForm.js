@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { UIProvider, FormControl, Input, Button } from "@yamada-ui/react";
-import { useNotice } from "@yamada-ui/react"
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -15,28 +14,34 @@ const LoginForm = () => {
         window.location.href = '/';
       }
     } catch (error) {
-      // エラー処理
+      if (error.response && error.response.status === 500) {
+        alert("このユーザー名は既に使用されています。");
+      } else {
+        alert("エラーが発生しました。");
+      }
     }
   };
 
   return (
     <UIProvider>
       <form onSubmit={handleSubmit}>
-        <FormControl label="ユーザ名">
+        <FormControl label="ユーザ名" isRequired errorMessage="ユーザ名は必須です。">
           <Input
             type="text"
             name="user[username]"
             placeholder="ユーザ名"
             value={username}
+            autoComplete="username"
             onChange={e => setUsername(e.target.value)}
           />
         </FormControl>
-        <FormControl label="パスワード">
+        <FormControl label="パスワード" isRequired errorMessage="パスワードは必須です。">
           <Input
             type="password"
             name="user[password]"
             placeholder="パスワード"
             value={password}
+            autoComplete="current-password"
             onChange={e => setPassword(e.target.value)}
           />
         </FormControl>

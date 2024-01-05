@@ -4,13 +4,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    # ユーザ登録の処理を記述する
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
       render json: { status: 200 }
     else
-      render json: { status: 500 }
+      render json: { status: 422, errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

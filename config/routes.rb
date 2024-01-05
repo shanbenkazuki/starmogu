@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get "games/high" => "games#high"
   get "login" => "games#login_form"
   post 'login', to: 'sessions#create'
+  post 'logout' => 'sessions#destroy'
 end
