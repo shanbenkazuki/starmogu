@@ -22,7 +22,8 @@ class ScoresController < ApplicationController
         render json: { status: 404, error: "User not found" }, status: :not_found
       end
     else
-      render json: { status: 401, error: "Not authorized" }, status: :unauthorized
+      # render json: { status: 401, error: "Not authorized" }, status: :unauthorized
+      render json: { status: 200, message: "スコア登録なし" }
     end
   end
 
