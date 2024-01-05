@@ -7,7 +7,6 @@ import axios from 'axios';
 
 const levels = [
   { path: "/games/low", label: "初級" },
-  { path: "/games/middle", label: "中級" },
   { path: "/games/high", label: "上級" },
 ];
 
