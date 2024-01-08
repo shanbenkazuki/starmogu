@@ -50,7 +50,7 @@ const Cell = ({ level, isStart, isDecoy, onStartClick, onDecoyClick }) => {
       <div className="w-32 h-32 border border-gray-400 flex justify-center items-center">
         {isStart && (
           <Button
-          onClick={onStartClick}
+          onPointerDown={onStartClick}
           colorScheme={startButtonColor}
           style={{ animation: 'popIn 0.5s ease-out' }}
         >
@@ -59,7 +59,7 @@ const Cell = ({ level, isStart, isDecoy, onStartClick, onDecoyClick }) => {
           )}
         {isDecoy && decoyButton && (
           <Button
-          onClick={onDecoyClick}
+          onPointerDown={onDecoyClick}
           colorScheme={decoyButton.colorScheme}
           style={{ animation: 'popIn 0.5s ease-out' }}
         >
